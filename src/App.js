@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from './components/header/Header';
-//import Buscar from './components/Buscar/Barra';
+import Busca from './components/Buscar/Busca';
 import api from './service/api';
-import ApiData from './Data/Api-data';
 
 import './App.css';
 import Apidata from './Data/Api-data';
@@ -36,18 +35,12 @@ const App = () => {
   return (
     <div className="App">
       <Header titulo="API - Rick and Morty"/>
+      <Busca
+        gBusca={getBusca}
+        vbusca={busca}
+        uBusca={updateBusca}
+      />
       
-      <form className="form-busca" onSubmit={getBusca}>
-        <input 
-        className="form-input"
-        value={busca}
-        type="text"
-        onChange={updateBusca}
-        placeholder="Informe um nome." 
-        />
-        <button className="form-btn">Buscar</button>
-      </form>
-
       { personagem.map(per => (
         <div className="containerPersonagem" key={`${per.id}`}>
           <Apidata
