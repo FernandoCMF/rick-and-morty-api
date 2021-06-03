@@ -1,0 +1,11 @@
+.container-titulo {
+  display: flex;
+  justify-content: center;
+  background-color: aqua;
+
+}
+
+.titulo {
+  font-size: 40px;
+  font-family: 'Permanent Marker';
+}
