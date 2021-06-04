@@ -1,7 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
 * {
+ font-family: 'Permanent Marker';
+ color: #fff;
  margin: 0;
  padding: 0; 
 }
 
+.containerPersonagem {
+display: flex;
+-moz-box-pack: center;
+justify-content: center;
+-moz-box-align: center;
+align-items: center;
+padding: 4.5rem 0px;
+background: rgb(36, 40, 47) none repeat scroll 0% 0%;
+min-height: calc(-60px + 50vh);
+}

@@ -1,0 +1,9 @@
+.containerData{
+  background-color: blueviolet;
+  display: flex;
+
+}
+
+.dataStatus{
+  font-size: 20px;
+}

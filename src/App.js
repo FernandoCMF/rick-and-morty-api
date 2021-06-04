@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import Header from './components/header/Header';
-import Busca from './components/Buscar/Busca';
-import api from './service/api';
-
 import './App.css';
-import Apidata from './Data/Api-data';
+import Header from './components/header/Header';
+import Busca from './components/buscar/Busca';
+import api from './service/api';
+import Apidata from './data/Api-data';
+import Filtro from './components/filtro/Filtro';
 
 const App = () => {
 
   const [personagem, setPersonagem] = useState([]);
   const [busca, setBusca] = useState("");
-  const [consulta, setConsulta] = useState('rick');
+  const [consulta, setConsulta] = useState('');
 
   useEffect(() => {
-    api.get(`/character/?name=${consulta}`)
+    api.get(`/character/?name=${consulta}&status=alive`)
     .then(response => {
       setPersonagem(response.data.results)
       console.log(response.data.results)
@@ -30,17 +30,11 @@ const App = () => {
     setBusca('');
   }
   
-
-
   return (
     <div className="App">
       <Header titulo="API - Rick and Morty"/>
-      <Busca
-        gBusca={getBusca}
-        vbusca={busca}
-        uBusca={updateBusca}
-      />
-      
+      <Busca gBusca={getBusca} vbusca={busca} uBusca={updateBusca} />
+      <Filtro/>
       { personagem.map(per => (
         <div className="containerPersonagem" key={`${per.id}`}>
           <Apidata
