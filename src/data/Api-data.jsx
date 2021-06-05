@@ -1,13 +1,21 @@
 import React from 'react';
-import './ApiData.css';
+import {
+  ContainerData, 
+  DataNome, 
+  Imagem,
+  DataStatus,
+  ContainerSobre
+} from '../style/styleData/styleData';
 
 const Apidata = ({nome, status, imagem}) => {
   return(
-    <div className="containerData">
-      <h1 className="dataNome">{nome}</h1>
-      <p className="dataStatus">{status}</p>
-      <img className="dataImagem" src={imagem}  alt={nome} />
-    </div>
+    <ContainerData>
+      <Imagem src={imagem} alt={nome}/>
+        <ContainerSobre>
+          <DataNome>{nome}</DataNome>
+          <DataStatus>{status}</DataStatus>
+        </ContainerSobre>
+    </ContainerData>
   )
 }
 

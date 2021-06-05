@@ -35,17 +35,20 @@ const App = () => {
       <Header titulo="API - Rick and Morty"/>
       <Busca gBusca={getBusca} vbusca={busca} uBusca={updateBusca} />
       <Filtro/>
-      { personagem.map(per => (
-        <div className="containerPersonagem" key={`${per.id}`}>
-          <Apidata
-            nome={per.name}
-            status={per.status}
-            imagem={per.image}
-          />
-        </div>
-      ))
-      }
 
+      
+      <div className="containerPersonagem">
+        { personagem.map(per => (
+          <div className="Personagens" key={`${per.id}`}>
+            <Apidata
+              nome={per.name}
+              status={per.status}
+              imagem={per.image}
+              />
+          </div>
+        ))
+      }
+      </div>
     </div>
   );
 }

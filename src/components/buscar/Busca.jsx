@@ -3,7 +3,6 @@ import './Busca.css';
 
 const Busca = ({gBusca, vbusca, uBusca}) => {
   return(
-    <>
       <form className="form-busca" onSubmit={gBusca}>
           <input 
           className="form-input"
@@ -14,7 +13,7 @@ const Busca = ({gBusca, vbusca, uBusca}) => {
           />
           <button className="form-btn">Buscar</button>
         </form>
-    </>
+    
   );
 }
 
