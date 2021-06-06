@@ -1,19 +1,17 @@
 import React from 'react';
 import {
   ContainerData, 
-  DataNome, 
   Imagem,
-  DataStatus,
   ContainerSobre
-} from '../style/styleData/styleData';
+} from '../style/styleData';
 
 const Apidata = ({nome, status, imagem}) => {
   return(
     <ContainerData>
       <Imagem src={imagem} alt={nome}/>
         <ContainerSobre>
-          <DataNome>{nome}</DataNome>
-          <DataStatus>{status}</DataStatus>
+          <h1>{nome}</h1>
+          <p>{status}</p>
         </ContainerSobre>
     </ContainerData>
   )
