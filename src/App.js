@@ -16,11 +16,16 @@ const App = () => {
   const [busca, setBusca] = useState("");
   const [consulta, setConsulta] = useState('');
 
+  const [status, setStatus] = useState('');
+  const [buscaStatus , setBuscaStatus] = useState("");
+
+
   useEffect(() => {
-    api.get(`/character/?name=${consulta}`)
+    api.get(`/character/?name=${consulta}&status=${status}`)
     .then(response => {
       setPersonagem(response.data.results)
-      console.log(response.data)
+      console.log(response.data.results)
+      console.log()
     }).catch(err => console.log(err))
   },[consulta])
 
@@ -32,14 +37,37 @@ const App = () => {
     e.preventDefault();
     setConsulta(busca);
     setBusca('');
+    
   }
-  
+
+  // filtro de busca
+  const updateBuscaStatus = e => {
+    setStatus(e.target.value);
+  } 
+
+  const getBuscaStatus = e => {
+    e.preventDefault();  
+    setStatus(status);
+    setBuscaStatus('');
+  }
+
   return (
     <div>
       <GlobalStyled/>
       <Header titulo="API - Rick and Morty"/>
-      <Busca gBusca={getBusca} vbusca={busca} uBusca={updateBusca} />
-      <Filtro/>
+      
+      <Busca
+        gBusca={getBusca} 
+        vbusca={busca} 
+        uBusca={updateBusca}
+      />
+      
+      <Filtro 
+        gstatus={getBuscaStatus} 
+        status={buscaStatus} 
+        uStatus={updateBuscaStatus}
+      />
+      <h1> valor status {status}</h1>
       
       <ContainerPersonagem>
         { personagem.map(per => (

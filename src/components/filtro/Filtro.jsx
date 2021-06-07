@@ -1,14 +1,14 @@
 import React from 'react';
 import './Filtro.css';
 
-const Filtro = () => {
+const Filtro = ({gstaus, uStatus}) => {
   return(
     <div className="containerFiltro">
       <div className="filtro">
-          <select className="selecao">
-            <option defaultValue value="Alive">Vivo</option>
-            <option value="Dead">Morto</option>
-            <option value="Unknown">Unknown</option>
+          <select className="selecao" onChange={uStatus}>
+            <option defaultValue value={gstaus}>alive</option>
+            <option value={gstaus}>dead</option>
+            <option value={gstaus}>unknown</option>
           </select>
         </div>
         <div className="filtro">

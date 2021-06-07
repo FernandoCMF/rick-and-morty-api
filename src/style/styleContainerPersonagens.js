@@ -2,14 +2,16 @@ import styled from 'styled-components';
 
 export const ContainerPersonagem = styled.article`
   background-color: #24282f;
-  display: grid;
+  max-width: 100%;
+  min-width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 50%;
+  margin: 0 auto;
   padding: 20px;
-  grid-template-columns: repeat(3, 1fr);
-
-  min-width: 48em;
 `;
 
 export const Personagens = styled.div`
   background-color: #a2a3a3;
-  margin: 10px;
+  margin: 0 auto;
 `;
