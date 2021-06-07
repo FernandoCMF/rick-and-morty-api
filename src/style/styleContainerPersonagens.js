@@ -12,6 +12,5 @@ export const ContainerPersonagem = styled.article`
 `;
 
 export const Personagens = styled.div`
-  background-color: #a2a3a3;
   margin: 0 auto;
 `;
