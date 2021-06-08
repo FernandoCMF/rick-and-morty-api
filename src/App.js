@@ -16,18 +16,19 @@ const App = () => {
   const [busca, setBusca] = useState("");
   const [consulta, setConsulta] = useState('');
 
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState('alive');
   const [buscaStatus , setBuscaStatus] = useState("");
 
 
   useEffect(() => {
-    api.get(`/character/?name=${consulta}&status=${status}`)
+    api.get(`/character/?name=${consulta}&status=${status}&limit=10`)
     .then(response => {
-      setPersonagem(response.data.results)
-      console.log(response.data.results)
-      console.log()
+    setPersonagem(response.data.results)
+    console.log(response.data)
     }).catch(err => console.log(err))
-  },[consulta])
+  
+},[consulta])
+
 
   const updateBusca = e => {
     setBusca(e.target.value);
