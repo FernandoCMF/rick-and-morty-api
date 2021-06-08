@@ -1,24 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import Header from './components/header/Header';
-import Busca from './components/Buscar/Busca';
 import api from './service/api';
-
-import './App.css';
-import Apidata from './Data/Api-data';
+import GlobalStyled from './style/GlobalStyled';
+import Header from './components/header/Header';
+import Busca from './components/buscar/Busca';
+import Filtro from './components/filtro/Filtro';
+import Apidata from './data/Api-data';
+import {
+      ContainerPersonagem,
+      Personagens
+  } from './style/styleContainerPersonagens';
 
 const App = () => {
 
   const [personagem, setPersonagem] = useState([]);
   const [busca, setBusca] = useState("");
-  const [consulta, setConsulta] = useState('rick');
+  const [consulta, setConsulta] = useState('');
+
+  const [status, setStatus] = useState('alive');
+  const [buscaStatus , setBuscaStatus] = useState("");
+
 
   useEffect(() => {
-    api.get(`/character/?name=${consulta}`)
+    api.get(`/character/?name=${consulta}&status=${status}&limit=10`)
     .then(response => {
-      setPersonagem(response.data.results)
-      console.log(response.data.results)
+    setPersonagem(response.data.results)
+    console.log(response.data)
     }).catch(err => console.log(err))
-  },[consulta])
+  
+},[consulta])
+
 
   const updateBusca = e => {
     setBusca(e.target.value);
@@ -28,29 +38,50 @@ const App = () => {
     e.preventDefault();
     setConsulta(busca);
     setBusca('');
+    
   }
-  
 
+  // filtro de busca
+  const updateBuscaStatus = e => {
+    setStatus(e.target.value);
+  } 
+
+  const getBuscaStatus = e => {
+    e.preventDefault();  
+    setStatus(status);
+    setBuscaStatus('');
+  }
 
   return (
-    <div className="App">
+    <div>
+      <GlobalStyled/>
       <Header titulo="API - Rick and Morty"/>
+      
       <Busca
-        gBusca={getBusca}
-        vbusca={busca}
+        gBusca={getBusca} 
+        vbusca={busca} 
         uBusca={updateBusca}
       />
       
-      { personagem.map(per => (
-        <div className="containerPersonagem" key={`${per.id}`}>
-          <Apidata
-            nome={per.name}
-            status={per.status}
-            imagem={per.image}
-          />
-        </div>
-      ))
+      <Filtro 
+        gstatus={getBuscaStatus} 
+        status={buscaStatus} 
+        uStatus={updateBuscaStatus}
+      />
+      <h1> valor status {status}</h1>
+      
+      <ContainerPersonagem>
+        { personagem.map(per => (
+          <Personagens key={`${per.id}`}>
+            <Apidata
+              nome={per.name}
+              status={per.status}
+              imagem={per.image}
+              />
+          </Personagens>
+        ))
       }
+      </ContainerPersonagem>
 
     </div>
   );

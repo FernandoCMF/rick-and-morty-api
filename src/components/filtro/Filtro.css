@@ -1,0 +1,15 @@
+.containerFiltro {
+  display: flex;
+  justify-content: center;
+}
+
+.filtro{
+  padding: 10px;
+}
+
+.selecao {
+  background-color: #3c3e44;
+  font-size: 18px;
+  border-radius: 30px;
+}
+
