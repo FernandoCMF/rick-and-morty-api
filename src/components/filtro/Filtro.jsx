@@ -11,16 +11,6 @@ const Filtro = ({gstaus, uStatus}) => {
             <option value={gstaus}>unknown</option>
           </select>
         </div>
-        <div className="filtro">
-          <select className="selecao">
-            <option value="Human">Human</option>
-            <option value="Alien">Alien</option>
-            <option value="Mythoplogical">Mythological Creature</option>
-            <option value="Animal">Animal</option>
-            <option value="Cronenberg">Cronenberg</option>
-            <option value="Poopybutthole">Poopybutthole</option>
-          </select>
-      </div>
     </div>
   );
 }

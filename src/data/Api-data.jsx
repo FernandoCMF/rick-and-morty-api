@@ -5,13 +5,17 @@ import {
   ContainerSobre
 } from '../style/styleData';
 
-const Apidata = ({nome, status, imagem}) => {
+const Apidata = ({nome, status, imagem, species, gender}) => {
   return(
     <ContainerData>
       <Imagem src={imagem} alt={nome}/>
         <ContainerSobre>
           <h1>{nome}</h1>
-          <p>{status}</p>
+          {status === 'Dead' ? <span style={{color:'#bf1600'}}>{status}</span> :
+            <span style={{color:'#00bf33'}}>{status}</span>
+          }
+          <p>{species}</p>
+          <p>{gender}</p>
         </ContainerSobre>
     </ContainerData>
   )

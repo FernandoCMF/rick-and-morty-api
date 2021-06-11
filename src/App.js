@@ -17,11 +17,11 @@ const App = () => {
   const [consulta, setConsulta] = useState('');
 
   const [status, setStatus] = useState('alive');
-  const [buscaStatus , setBuscaStatus] = useState("");
+  const [consultaStatus , setConsultaStatus] = useState("");
 
 
   useEffect(() => {
-    api.get(`/character/?name=${consulta}&status=${status}&limit=10`)
+    api.get(`/character/?name=${consulta}&status=${status}`)
     .then(response => {
     setPersonagem(response.data.results)
     console.log(response.data)
@@ -41,16 +41,17 @@ const App = () => {
     
   }
 
-  // filtro de busca
-  const updateBuscaStatus = e => {
+  // filtro de status
+  const updateConsultaStatus = e => {
     setStatus(e.target.value);
   } 
 
-  const getBuscaStatus = e => {
+  const getConsultaStatus = e => {
     e.preventDefault();  
     setStatus(status);
-    setBuscaStatus('');
+    setConsultaStatus('');
   }
+
 
   return (
     <div>
@@ -64,9 +65,9 @@ const App = () => {
       />
       
       <Filtro 
-        gstatus={getBuscaStatus} 
-        status={buscaStatus} 
-        uStatus={updateBuscaStatus}
+        gstatus={getConsultaStatus} 
+        status={consultaStatus} 
+        uStatus={updateConsultaStatus}
       />
       <h1> valor status {status}</h1>
       
@@ -77,6 +78,8 @@ const App = () => {
               nome={per.name}
               status={per.status}
               imagem={per.image}
+              species={per.species}
+              gender={per.gender}
               />
           </Personagens>
         ))

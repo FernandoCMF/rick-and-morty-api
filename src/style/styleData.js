@@ -24,9 +24,15 @@ export const ContainerSobre = styled.div`
   h1{
     font-size: 20px;
     max-width: 100%;
+    color: #04afc6;
   }
 
   p{
     font-size: 20px;
+  }
+  
+  span {
+    font-size: 15px;
+    color: #001433;
   }
 `;
