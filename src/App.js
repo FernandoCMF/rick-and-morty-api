@@ -69,8 +69,7 @@ const App = () => {
         status={consultaStatus} 
         uStatus={updateConsultaStatus}
       />
-      <h1> valor status {status}</h1>
-      
+    
       <ContainerPersonagem>
         { personagem.map(per => (
           <Personagens key={`${per.id}`}>
